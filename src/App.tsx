@@ -37,6 +37,8 @@ function App() {
 	const playerRef = useRef<Piano | null>(null);
 	const currentlyPressedKeys = useRef<Set<string>>(new Set());
 
+	const [ help, setHelp ] = useState(false);
+
 	const { keyTitle, setKeyTitle } = useKeyTitleStore((state) => state);
 	const { playingList, setPlayingList } = usePlayingStore((state) => state);
 
@@ -104,6 +106,24 @@ function App() {
 				<div className={ styles.keyTitleToggleContainer }>
 					<p>Key Label</p>
 					<Toggle setToggle={ setKeyTitle } toggle={ keyTitle } />
+				</div>
+				<div className={ styles.help } onClick={ () => {
+					setHelp(!help);
+				} }>
+					<p>?</p>
+					<div className={ styles.helpContent } style={ {
+						display: help ? 'block' : 'none',
+					} }>
+						<p>
+							<span className={ styles.codeBlock }>Q</span>부터 시작해서
+						</p>
+						<p>
+							<span className={ styles.codeBlock }>]</span>까지의 키보드를 눌러보세요!
+						</p>
+						<p>
+							숫자 부분은 반음을 표현할 수 있습니다!
+						</p>
+					</div>
 				</div>
 				<div className={ styles.keyboardContainer }>
 					<Keyboard play={ play } octave={ 2 } />
