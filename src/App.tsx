@@ -8,18 +8,27 @@ import { useKeyTitleStore } from './stores/keyTitleStore.ts';
 import { usePlayingStore } from './stores/playingStore.ts';
 
 const keyMap = {
-	'q': 'C4',
-	'2': 'C#4',
-	'w': 'D4',
-	'3': 'D#4',
-	'e': 'E4',
-	'r': 'F4',
-	'5': 'F#4',
-	't': 'G4',
-	'6': 'G#4',
-	'y': 'A4',
-	'7': 'A#4',
-	'u': 'B4',
+	'q': 'G3',
+	'2': 'G#3',
+	'w': 'A3',
+	'3': 'A#3',
+	'e': 'B3',
+	'r': 'C4',
+	'5': 'C#4',
+	't': 'D4',
+	'6': 'D#4',
+	'y': 'E4',
+	'u': 'F4',
+	'8': 'F#4',
+	'i': 'G4',
+	'9': 'G#4',
+	'o': 'A4',
+	'0': 'A#4',
+	'p': 'B4',
+	'[': 'C5',
+	'=': 'C#5',
+	'\\': 'D#5',
+	']': 'D5',
 };
 
 function App() {
@@ -71,6 +80,7 @@ function App() {
 	};
 
 	const handleKeyDown = (event: KeyboardEvent) => {
+
 		const key = event.key as keyof typeof keyMap;
 
 		if (keyMap[key] && !currentlyPressedKeys.current.has(key)) {
