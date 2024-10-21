@@ -8,7 +8,7 @@ import { useKeyTitleStore } from './stores/keyTitleStore.ts';
 import { usePlayingStore } from './stores/playingStore.ts';
 
 const keyMap = {
-	'1': 'C#3',
+	'1': 'F#3',
 	'q': 'G3',
 	'2': 'G#3',
 	'w': 'A3',
