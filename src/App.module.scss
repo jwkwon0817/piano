@@ -1,0 +1,102 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f0f0;
+
+  .keyTitleToggleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    p {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    position: fixed;
+    top: 30px;
+    right: 30px;
+  }
+}
+
+.keyboardContainer {
+  display: flex;
+  background-color: #ccc;
+  padding: 20px;
+
+  border-radius: 12px;
+
+  animation: keyboardAppear 0.5s ease-in-out;
+
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
+
+  .keyboard {
+    position: relative;
+    display: flex;
+
+    // Wrapper for black keys (positions them over the white keys)
+    .black {
+      position: absolute;
+      display: flex;
+      width: 100%;
+      top: 0;
+      pointer-events: none; // Prevent black keys from blocking white keys
+
+      div {
+        pointer-events: all; // Enable clicking on black keys
+
+        &:nth-child(1) {
+          transform: translateX(20px);
+        }
+
+        &:nth-child(2) {
+          transform: translateX(50px);
+        }
+
+        &:nth-child(3) {
+          transform: translateX(110px);
+        }
+
+        &:nth-child(4) {
+          transform: translateX(140px);
+        }
+
+        &:nth-child(5) {
+          transform: translateX(170px);
+        }
+      }
+    }
+  }
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+
+// Adding global styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes keyboardAppear {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

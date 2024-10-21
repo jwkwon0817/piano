@@ -1,0 +1,29 @@
+.container {
+  aspect-ratio: 2 / 1;
+  background-color: black;
+
+  width: 56px;
+  border-radius: 50px;
+  padding: 4px;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #333;
+  }
+
+  &:active {
+    background-color: #666;
+  }
+
+  .toggler {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.1s ease-in-out;
+  }
+}
