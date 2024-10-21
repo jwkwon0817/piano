@@ -31,10 +31,10 @@ function App() {
 	const { playingList, setPlayingList } = usePlayingStore((state) => state);
 
 	useEffect(() => {
-		loadPiano();
-
-		window.addEventListener('keydown', handleKeyDown);
-		window.addEventListener('keyup', handleKeyUp);
+		loadPiano().then(() => {
+			window.addEventListener('keydown', handleKeyDown);
+			window.addEventListener('keyup', handleKeyUp);
+		});
 
 		return () => {
 			window.removeEventListener('keydown', handleKeyDown);
@@ -49,14 +49,17 @@ function App() {
 			});
 			piano.toDestination();
 			await piano.load();
-			setIsLoaded(true);
 			playerRef.current = piano;
-			console.log('Piano loaded');
+
+			if (playerRef.current && playerRef.current.loaded) {
+				setIsLoaded(true);
+				console.log('Piano loaded');
+			}
 		}
 	};
 
 	const play = (note: string) => {
-		if (isLoaded && playerRef.current) {
+		if (playerRef.current) {
 			playerRef.current.keyDown({ note, velocity: 0.7 });
 			setPlayingList([ ...playingList, note ]);
 
